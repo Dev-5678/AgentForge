@@ -35,3 +35,21 @@ export class ProviderRateLimiter {
     return true;
   }
 }
+export class TokenReservationPool {
+  private reservedTokens = 0;
+  private maxTokens: number;
+
+  constructor(maxTokens = 100000) {
+    this.maxTokens = maxTokens;
+  }
+
+  public reserve(amount: number): boolean {
+    if (this.reservedTokens + amount > this.maxTokens) return false;
+    this.reservedTokens += amount;
+    return true;
+  }
+
+  public release(amount: number): void {
+    this.reservedTokens = Math.max(0, this.reservedTokens - amount);
+  }
+}
