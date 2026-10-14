@@ -18,9 +18,9 @@ function runQueueBenchmark() {
   }
   const t2 = performance.now();
 
-  console.log(Pushed  priority tasks in  ms);
-  console.log(Dispatched  tasks in  ms);
-  console.log(Queue Throughput:  ops/sec\n);
+  console.log('Pushed ' + TASKS + ' priority tasks in ' + (t1 - t0).toFixed(2) + ' ms');
+  console.log('Dispatched ' + popped + ' tasks in ' + (t2 - t1).toFixed(2) + ' ms');
+  console.log('Queue Throughput: ' + Math.floor(TASKS / ((t2 - t0) / 1000)).toLocaleString() + ' ops/sec\n');
 }
 
 runQueueBenchmark();

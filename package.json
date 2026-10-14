@@ -5,7 +5,8 @@
   "main": "dist/index.js",
   "scripts": {
     "build": "tsc",
-    "test": "node --test dist/tests/*.js",
+    "test": "node --test dist/tests",
+    "benchmark": "node dist/benchmark/dag-benchmark.js && node dist/benchmark/queue-benchmark.js",
     "start": "node dist/src/server/api.js"
   },
   "keywords": [

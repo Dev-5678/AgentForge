@@ -12,16 +12,18 @@ export interface DynamicBranchNode {
   trueBranchNodeId: string;
   falseBranchNodeId: string;
 }
+
 export class DynamicBranchEvaluator {
   public static evaluateBranch(node: DynamicBranchNode, context: Record<string, any>): string {
     const outcome = node.condition(context);
     return outcome ? node.trueBranchNodeId : node.falseBranchNodeId;
   }
 }
+
 export class BranchCycleGuard {
   public static assertAcyclicBranch(visited: Set<string>, nextNodeId: string): void {
     if (visited.has(nextNodeId)) {
-      throw new Error(Cycle detected during dynamic branching to []);
+      throw new Error('Cycle detected during dynamic branching to [' + nextNodeId + ']');
     }
     visited.add(nextNodeId);
   }
