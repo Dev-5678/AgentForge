@@ -76,13 +76,14 @@ export class WorkflowExecutor {
 
             while (attempts < maxAttempts && !success) {
               attempts++;
+              let timer: NodeJS.Timeout | undefined;
               try {
                 // Execute with timeout race
                 const output = await Promise.race([
                   node.execute(context),
-                  new Promise((_, reject) =>
-                    setTimeout(() => reject(new Error(`Timeout exceeded ${node.timeoutMs}ms`)), node.timeoutMs)
-                  ),
+                  new Promise((_, reject) => {
+                    timer = setTimeout(() => reject(new Error(`Timeout exceeded ${node.timeoutMs}ms`)), node.timeoutMs);
+                  }),
                 ]);
 
                 context.outputs[nodeId] = output;
@@ -96,6 +97,8 @@ export class WorkflowExecutor {
                   const backoffMs = Math.min(100 * Math.pow(2, attempts), 2000);
                   await new Promise((r) => setTimeout(r, backoffMs));
                 }
+              } finally {
+                if (timer) clearTimeout(timer);
               }
             }
 

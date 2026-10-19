@@ -36,12 +36,13 @@ export class ToolSandbox {
     }
 
     const start = performance.now();
+    let timer: NodeJS.Timeout | undefined;
     try {
       const result = await Promise.race([
         tool.execute(args),
-        new Promise((_, reject) =>
-          setTimeout(() => reject(new Error(`Tool execution exceeded ${timeoutMs}ms limit`)), timeoutMs)
-        ),
+        new Promise((_, reject) => {
+          timer = setTimeout(() => reject(new Error(`Tool execution exceeded ${timeoutMs}ms limit`)), timeoutMs);
+        }),
       ]);
 
       const durationMs = performance.now() - start;
@@ -51,6 +52,8 @@ export class ToolSandbox {
       const durationMs = performance.now() - start;
       this.callAuditLog.push({ tool: name, args, timestamp: Date.now(), durationMs });
       throw err;
+    } finally {
+      if (timer) clearTimeout(timer);
     }
   }
 
