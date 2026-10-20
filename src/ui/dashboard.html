@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AgentForge // Autonomous Agent DAG Runtime & Telemetry Console</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: #09090b;
+      color: #fafafa;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      height: 52px;
+      background: #18181b;
+      border-bottom: 1px solid #27272a;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 20px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 700;
+      font-size: 15px;
+    }
+    .badge {
+      background: #8b5cf6;
+      color: #fff;
+      font-size: 11px;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-family: monospace;
+    }
+    .btn {
+      background: #8b5cf6;
+      color: #fff;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.15s ease;
+    }
+    .btn:hover { background: #7c3aed; }
+    .layout {
+      flex: 1;
+      display: grid;
+      grid-template-columns: 1fr 400px;
+      overflow: hidden;
+    }
+    .dag-viewport {
+      padding: 24px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .telemetry-sidebar {
+      background: #121215;
+      border-left: 1px solid #27272a;
+      display: flex;
+      flex-direction: column;
+    }
+    .sidebar-header {
+      padding: 14px 18px;
+      border-bottom: 1px solid #27272a;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: #a1a1aa;
+    }
+    .trace-list {
+      flex: 1;
+      padding: 16px;
+      overflow-y: auto;
+      font-family: monospace;
+      font-size: 12px;
+    }
+    .wave-card {
+      background: #18181b;
+      border: 1px solid #27272a;
+      border-radius: 10px;
+      padding: 16px;
+    }
+    .wave-title {
+      font-size: 12px;
+      color: #a1a1aa;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 12px;
+      font-family: monospace;
+    }
+    .node-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 12px;
+    }
+    .node-card {
+      background: #27272a;
+      border: 1px solid #3f3f46;
+      border-radius: 8px;
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .node-card.active { border-color: #8b5cf6; box-shadow: 0 0 10px rgba(139, 92, 246, 0.2); }
+    .node-card.completed { border-color: #10b981; }
+    .node-name { font-size: 13px; font-weight: 600; color: #fff; }
+    .node-role { font-size: 11px; color: #a1a1aa; font-family: monospace; }
+    .node-status {
+      margin-top: 4px;
+      font-size: 11px;
+      font-weight: bold;
+      color: #10b981;
+    }
+    .trace-item {
+      padding: 8px 10px;
+      background: #1c1c21;
+      border: 1px solid #27272a;
+      border-radius: 6px;
+      margin-bottom: 8px;
+    }
+    .trace-item .span-name { color: #c4b5fd; font-weight: bold; }
+    .trace-item .span-meta { color: #71717a; font-size: 11px; margin-top: 3px; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <span>AGENTFORGE</span>
+      <span class="badge">DAG RUNTIME</span>
+    </div>
+    <button class="btn" id="run-btn">? Execute DAG Pipeline</button>
+  </header>
+
+  <div class="layout">
+    <div class="dag-viewport">
+      <div class="wave-card">
+        <div class="wave-title">Execution Wave 0 // Decomposition Phase</div>
+        <div class="node-grid">
+          <div class="node-card completed" id="card-planner">
+            <div class="node-name">Task Decomposition</div>
+            <div class="node-role">Lead Architect Agent</div>
+            <div class="node-status">? COMPLETED (14ms)</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="wave-card">
+        <div class="wave-title">Execution Wave 1 // Parallel Execution Phase</div>
+        <div class="node-grid">
+          <div class="node-card completed" id="card-ingest">
+            <div class="node-name">Data Ingestion</div>
+            <div class="node-role">Crawler Agent</div>
+            <div class="node-status">? COMPLETED (28ms)</div>
+          </div>
+          <div class="node-card completed" id="card-security">
+            <div class="node-name">Vulnerability Analysis</div>
+            <div class="node-role">Security Agent</div>
+            <div class="node-status">? COMPLETED (22ms)</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="wave-card">
+        <div class="wave-title">Execution Wave 2 // Aggregation & Synthesis Phase</div>
+        <div class="node-grid">
+          <div class="node-card completed" id="card-synth">
+            <div class="node-name">Executive Synthesis</div>
+            <div class="node-role">Chief Strategist Agent</div>
+            <div class="node-status">? COMPLETED (18ms)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="telemetry-sidebar">
+      <div class="sidebar-header">OpenTelemetry Distributed Traces</div>
+      <div class="trace-list" id="trace-list">
+        <div class="trace-item">
+          <div class="span-name">WorkflowRun [run-0192]</div>
+          <div class="span-meta">Status: SUCCESS | Duration: 62.40ms</div>
+        </div>
+        <div class="trace-item">
+          <div class="span-name">?? Wave-0 (Task Decomposition)</div>
+          <div class="span-meta">Status: COMPLETED | Latency: 14.12ms</div>
+        </div>
+        <div class="trace-item">
+          <div class="span-name">?? Wave-1 (Parallel Concurrency)</div>
+          <div class="span-meta">Status: COMPLETED | Max Latency: 28.05ms</div>
+        </div>
+        <div class="trace-item">
+          <div class="span-name">?? Wave-2 (Executive Synthesis)</div>
+          <div class="span-meta">Status: COMPLETED | Latency: 18.20ms</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('run-btn').addEventListener('click', async () => {
+      const btn = document.getElementById('run-btn');
+      btn.disabled = true;
+      btn.textContent = '? Executing Waves...';
+
+      try {
+        const res = await fetch('http://localhost:4000/api/run-demo', { method: 'POST' });
+        const data = await res.json();
+
+        const traceList = document.getElementById('trace-list');
+        traceList.innerHTML = '';
+        data.traces.forEach(t => {
+          const div = document.createElement('div');
+          div.className = 'trace-item';
+          div.innerHTML = `
+            <div class="span-name">${t.name}</div>
+            <div class="span-meta">Status: ${t.status} | Duration: ${t.durationMs || 0}ms</div>
+          `;
+          traceList.appendChild(div);
+        });
+      } catch (e) {
+        console.log('Server not locally listening, displaying preview state.');
+      } finally {
+        btn.disabled = false;
+        btn.textContent = '? Execute DAG Pipeline';
+      }
+    });
+  </script>
+</body>
+</html>
