@@ -126,3 +126,7 @@ Licensed under the [MIT License](LICENSE).
 - **Dynamic Conditional Branching:** Branch nodes evaluate context predicates at runtime, generating deterministic fork-join DAG subtrees.
 - **Priority Task Queue & Leaky Bucket Limiter:** Handles 100,000+ queue operations/sec with automated dead-letter queues and LLM provider token quotas.
 - **OpenTelemetry Jaeger & Zipkin Exporters:** Native span transformation conforming to OpenTelemetry V1.28 and Zipkin V2 specifications.
+- **Strict JSON Schema Runtime Validator:** Structural validation engine enforcing primitive types, required parameters, enums, array items, and numeric boundaries on tool arguments.
+- **Prompt Template Engine:** Mustache-style variable interpolation supporting dot-notation nested paths, fallback default values, raw substitution, and strict mode guards.
+- **Half-Open Circuit Breaker Auto-Recovery:** Automatic failure counting, isolation, and half-open probe testing to gracefully recover downstream agent worker dependencies.
+

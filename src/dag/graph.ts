@@ -118,4 +118,34 @@ export class WorkflowDAG {
 
     return waves;
   }
+
+  /**
+   * Filter outgoing edges whose conditions evaluate to true for a node's output
+   */
+  public getActiveOutgoingEdges(fromNodeId: string, outputResult: any): WorkflowEdge[] {
+    return this.edges.filter((edge) => {
+      if (edge.from !== fromNodeId) return false;
+      if (!edge.condition) return true; // Unconditional edge
+      try {
+        return edge.condition(outputResult);
+      } catch {
+        return false;
+      }
+    });
+  }
+
+  /**
+   * Return total registered node count
+   */
+  public getNodeCount(): number {
+    return this.nodes.size;
+  }
+
+  /**
+   * Return total registered edge count
+   */
+  public getEdgeCount(): number {
+    return this.edges.length;
+  }
 }
+
