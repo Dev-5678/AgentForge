@@ -1,0 +1,27 @@
+{
+  "name": "agent-forge",
+  "version": "1.0.0",
+  "description": "High-Throughput Autonomous AI Agent DAG Workflow Runtime & Sandboxed Execution Engine",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "test": "node --test dist/tests/*.js",
+    "start": "node dist/src/server/api.js"
+  },
+  "keywords": [
+    "ai-agents",
+    "dag-engine",
+    "orchestrator",
+    "opentelemetry",
+    "vector-search",
+    "sandbox",
+    "llm-runtime",
+    "typescript"
+  ],
+  "author": "Dev Jangid <https://github.com/Dev-5678>",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "typescript": "^5.3.3"
+  }
+}
