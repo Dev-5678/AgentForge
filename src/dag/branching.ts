@@ -18,3 +18,11 @@ export class DynamicBranchEvaluator {
     return outcome ? node.trueBranchNodeId : node.falseBranchNodeId;
   }
 }
+export class BranchCycleGuard {
+  public static assertAcyclicBranch(visited: Set<string>, nextNodeId: string): void {
+    if (visited.has(nextNodeId)) {
+      throw new Error(Cycle detected during dynamic branching to []);
+    }
+    visited.add(nextNodeId);
+  }
+}
