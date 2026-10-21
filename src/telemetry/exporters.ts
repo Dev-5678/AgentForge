@@ -25,3 +25,14 @@ export class ZipkinSpanFormatter {
     };
   }
 }
+export class TraceSampler {
+  private sampleRate: number; // 0.0 to 1.0
+
+  constructor(sampleRate = 1.0) {
+    this.sampleRate = sampleRate;
+  }
+
+  public shouldSample(): boolean {
+    return Math.random() <= this.sampleRate;
+  }
+}
