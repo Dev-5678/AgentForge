@@ -6,17 +6,20 @@
 
 export interface QueuedTask<T = any> {
   id: string;
-  priority: number; // Higher number = higher priority
+  priority: number;
   payload: T;
   enqueuedAt: number;
   attempts: number;
 }
+
 export class TaskQueueManager<T = any> {
   private queue: QueuedTask<T>[] = [];
   private deadLetterQueue: QueuedTask<T>[] = [];
+  private counter = 0;
 
   public push(payload: T, priority = 0): string {
-    const id = 	ask--;
+    this.counter++;
+    const id = 'task-' + Date.now() + '-' + this.counter;
     this.queue.push({ id, priority, payload, enqueuedAt: Date.now(), attempts: 0 });
     this.queue.sort((a, b) => b.priority - a.priority);
     return id;
@@ -36,9 +39,15 @@ export class TaskQueueManager<T = any> {
     }
   }
 
-  public getQueueDepth(): number { return this.queue.length; }
-  public getDeadLetterCount(): number { return this.deadLetterQueue.length; }
+  public getQueueDepth(): number {
+    return this.queue.length;
+  }
+
+  public getDeadLetterCount(): number {
+    return this.deadLetterQueue.length;
+  }
 }
+
 export class WorkerPool<T = any> {
   private concurrency: number;
   private activeWorkers = 0;
@@ -49,7 +58,7 @@ export class WorkerPool<T = any> {
 
   public async executeTask(fn: () => Promise<any>): Promise<any> {
     while (this.activeWorkers >= this.concurrency) {
-      await new Promise(r => setTimeout(r, 10));
+      await new Promise((r) => setTimeout(r, 10));
     }
     this.activeWorkers++;
     try {
