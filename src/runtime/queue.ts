@@ -39,3 +39,23 @@ export class TaskQueueManager<T = any> {
   public getQueueDepth(): number { return this.queue.length; }
   public getDeadLetterCount(): number { return this.deadLetterQueue.length; }
 }
+export class WorkerPool<T = any> {
+  private concurrency: number;
+  private activeWorkers = 0;
+
+  constructor(concurrency = 4) {
+    this.concurrency = concurrency;
+  }
+
+  public async executeTask(fn: () => Promise<any>): Promise<any> {
+    while (this.activeWorkers >= this.concurrency) {
+      await new Promise(r => setTimeout(r, 10));
+    }
+    this.activeWorkers++;
+    try {
+      return await fn();
+    } finally {
+      this.activeWorkers--;
+    }
+  }
+}
