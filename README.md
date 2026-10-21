@@ -118,3 +118,11 @@ npm start
 
 Designed and engineered with ?? by **[Dev Jangid](https://github.com/Dev-5678)**.  
 Licensed under the [MIT License](LICENSE).
+
+---
+
+## âš¡ October 21 Innovations: Dynamic Branching, Queue Pool & Jaeger Telemetry
+
+- **Dynamic Conditional Branching:** Branch nodes evaluate context predicates at runtime, generating deterministic fork-join DAG subtrees.
+- **Priority Task Queue & Leaky Bucket Limiter:** Handles 100,000+ queue operations/sec with automated dead-letter queues and LLM provider token quotas.
+- **OpenTelemetry Jaeger & Zipkin Exporters:** Native span transformation conforming to OpenTelemetry V1.28 and Zipkin V2 specifications.
