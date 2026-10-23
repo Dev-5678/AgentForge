@@ -129,4 +129,7 @@ Licensed under the [MIT License](LICENSE).
 - **Strict JSON Schema Runtime Validator:** Structural validation engine enforcing primitive types, required parameters, enums, array items, and numeric boundaries on tool arguments.
 - **Prompt Template Engine:** Mustache-style variable interpolation supporting dot-notation nested paths, fallback default values, raw substitution, and strict mode guards.
 - **Half-Open Circuit Breaker Auto-Recovery:** Automatic failure counting, isolation, and half-open probe testing to gracefully recover downstream agent worker dependencies.
+- **Exponential Backoff with Full Jitter:** Industrial retry policy formulation mitigating thundering-herd spikes against upstream LLM rate limits.
+- **Cryptographic Execution Audit Ledger:** Immutable, append-only SHA-256 hash-chained ledger verifying task execution transitions and tamper resilience.
+- **DAG Topological Critical Path Calculator:** Forward/backward pass algorithm computing earliest finish, step slack, and theoretical minimum workflow makespan.
 
