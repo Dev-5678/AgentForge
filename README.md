@@ -1,4 +1,4 @@
-# ?? AgentForge // Autonomous Multi-Agent DAG Workflow Runtime
+# 🤖 AgentForge // Autonomous Multi-Agent DAG Workflow Runtime
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-amber.svg)](LICENSE)
 [![Engine: TypeScript 5.x](https://img.shields.io/badge/Language-TypeScript%205.x%20Strict-blue.svg)](https://www.typescriptlang.org/)
@@ -10,7 +10,7 @@
 
 ---
 
-## ?? Architectural Topology
+## ⚡ Architectural Topology
 
 ```mermaid
 graph TD
@@ -42,7 +42,7 @@ graph TD
 
 ---
 
-## ?? DAG Topological Scheduling Formulation
+## 🧮 DAG Topological Scheduling Formulation
 
 Agent workflows are modeled as a finite directed acyclic graph $G = (V, E)$, where $V$ represents agent execution steps and $E \subseteq V \times V$ represents causal dependencies.
 
@@ -65,7 +65,7 @@ $$\text{Sim}(\vec{q}, \vec{d}) = \frac{\vec{q} \cdot \vec{d}}{\|\vec{q}\|_2 \|\v
 
 ---
 
-## ?? Performance Benchmarks
+## 📊 Performance Benchmarks
 
 | Component | Benchmark Metric | Result |
 | :--- | :--- | :--- |
@@ -77,7 +77,7 @@ $$\text{Sim}(\vec{q}, \vec{d}) = \frac{\vec{q} \cdot \vec{d}}{\|\vec{q}\|_2 \|\v
 
 ---
 
-## ?? Quickstart & Execution
+## 🚀 Quickstart & Execution
 
 ### Prerequisites
 - Node.js `v18.x`, `v20.x`, or `v22.x`
@@ -105,7 +105,7 @@ npm start
 
 ---
 
-## ??? Engineering Stack
+## ⚡? Engineering Stack
 
 - **Runtime & Language:** Node.js, TypeScript 5.3 (Strict Mode)
 - **Algorithms:** Kahn's Algorithm, Topological Sorting, Cosine Vector Indexing
@@ -114,9 +114,9 @@ npm start
 
 ---
 
-## ?? License & Attribution
+## 📄 License & Attribution
 
-Designed and engineered with ?? by **[Dev Jangid](https://github.com/Dev-5678)**.  
+Designed and engineered by **[Dev Jangid](https://github.com/Dev-5678)**.  
 Licensed under the [MIT License](LICENSE).
 
 ---
@@ -129,4 +129,7 @@ Licensed under the [MIT License](LICENSE).
 - **Strict JSON Schema Runtime Validator:** Structural validation engine enforcing primitive types, required parameters, enums, array items, and numeric boundaries on tool arguments.
 - **Prompt Template Engine:** Mustache-style variable interpolation supporting dot-notation nested paths, fallback default values, raw substitution, and strict mode guards.
 - **Half-Open Circuit Breaker Auto-Recovery:** Automatic failure counting, isolation, and half-open probe testing to gracefully recover downstream agent worker dependencies.
+- **Exponential Backoff with Full Jitter:** Industrial retry policy formulation mitigating thundering-herd spikes against upstream LLM rate limits.
+- **Cryptographic Execution Audit Ledger:** Immutable, append-only SHA-256 hash-chained ledger verifying task execution transitions and tamper resilience.
+- **DAG Topological Critical Path Calculator:** Forward/backward pass algorithm computing earliest finish, step slack, and theoretical minimum workflow makespan.
 
