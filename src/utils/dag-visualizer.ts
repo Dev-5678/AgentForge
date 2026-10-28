@@ -1,7 +1,7 @@
 /**
  * AgentForge - ASCII Workflow DAG Visualizer
  * 
- * @author Dev Jangid <https://github.com/Dev-5678>
+ * @author Dev <https://github.com/Dev-5678>
  */
 
 export class DAGVisualizer {

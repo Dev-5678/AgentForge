@@ -1,7 +1,7 @@
 /**
  * AgentForge - Core Workflow Types
  * 
- * @author Dev Jangid <https://github.com/Dev-5678>
+ * @author Dev <https://github.com/Dev-5678>
  */
 
 export type NodeStatus = 'PENDING' | 'RUNNING' | 'COMPLETED' | 'FAILED' | 'SKIPPED';

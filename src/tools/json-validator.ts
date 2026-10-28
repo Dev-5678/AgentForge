@@ -3,7 +3,7 @@
  * 
  * Provides strict structural and type validation for LLM tool invocation payloads.
  * 
- * @author Dev Jangid <https://github.com/Dev-5678>
+ * @author Dev <https://github.com/Dev-5678>
  */
 
 export type PropertyType = 'string' | 'number' | 'boolean' | 'array' | 'object' | 'null';

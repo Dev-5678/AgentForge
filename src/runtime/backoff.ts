@@ -8,7 +8,7 @@
  * Based on AWS Architecture & Google SRE Retry Formulations:
  * sleep = uniform_random(0, min(max_delay, base_delay * (multiplier ^ attempt)))
  * 
- * @author Dev Jangid <https://github.com/Dev-5678>
+ * @author Dev <https://github.com/Dev-5678>
  */
 
 export interface BackoffConfig {

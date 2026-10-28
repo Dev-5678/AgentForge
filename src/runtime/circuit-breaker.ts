@@ -4,7 +4,7 @@
  * Protects downstream agent services from cascading failures by isolating
  * degraded dependencies with automatic cooldown decay and half-open probe testing.
  * 
- * @author Dev Jangid <https://github.com/Dev-5678>
+ * @author Dev <https://github.com/Dev-5678>
  */
 
 export type CircuitBreakerState = 'CLOSED' | 'OPEN' | 'HALF_OPEN';

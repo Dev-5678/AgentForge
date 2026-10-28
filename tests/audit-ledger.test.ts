@@ -4,7 +4,7 @@
 
 import { describe, it } from 'node:test';
 import assert from 'node:assert';
-import { ExecutionAuditLedger } from '../src/runtime/audit-ledger';
+import { ExecutionAuditLedger } from '../src/runtime/audit-ledger.js';
 
 describe('Cryptographic Execution Audit Ledger', () => {
   it('appends audit records and chains SHA-256 hashes sequentially', () => {

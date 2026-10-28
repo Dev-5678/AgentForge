@@ -7,7 +7,7 @@
  * 3. Cycle detection exception handling
  * 4. Resilient retry with backoff
  * 
- * @author Dev Jangid <https://github.com/Dev-5678>
+ * @author Dev <https://github.com/Dev-5678>
  */
 
 import { describe, it } from 'node:test';

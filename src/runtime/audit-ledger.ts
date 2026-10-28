@@ -8,7 +8,7 @@
  * Chain formulation:
  * block_hash_n = SHA256(block_hash_{n-1} || stepId || status || timestamp || payload_hash)
  * 
- * @author Dev Jangid <https://github.com/Dev-5678>
+ * @author Dev <https://github.com/Dev-5678>
  */
 
 import { createHash } from 'node:crypto';

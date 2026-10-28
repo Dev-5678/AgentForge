@@ -4,7 +4,7 @@
  * Computes the longest dependency critical path, step slack bounds,
  * and minimum theoretical makespan across autonomous multi-agent DAGs.
  * 
- * @author Dev Jangid <https://github.com/Dev-5678>
+ * @author Dev <https://github.com/Dev-5678>
  */
 
 export interface DAGTaskNode {

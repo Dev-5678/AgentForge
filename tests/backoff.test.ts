@@ -4,7 +4,7 @@
 
 import { describe, it } from 'node:test';
 import assert from 'node:assert';
-import { BackoffPolicy } from '../src/runtime/backoff';
+import { BackoffPolicy } from '../src/runtime/backoff.js';
 
 describe('Exponential Backoff with Full Jitter Resilience', () => {
   it('computes exact exponential progression when jitterStrategy is NONE', () => {
@@ -47,7 +47,7 @@ describe('Exponential Backoff with Full Jitter Resilience', () => {
     });
 
     let calls = 0;
-    const result = await policy.executeWithRetry(async (attempt) => {
+    const result = await policy.executeWithRetry(async (attempt: number) => {
       calls++;
       if (attempt < 3) {
         throw new Error('Transient rate limit');

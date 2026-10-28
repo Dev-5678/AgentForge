@@ -4,7 +4,7 @@
  * Enforces memory safety, timeout guards, schema sanitization,
  * and rate limiting for dynamic autonomous agent tool calls.
  * 
- * @author Dev Jangid <https://github.com/Dev-5678>
+ * @author Dev <https://github.com/Dev-5678>
  */
 
 export interface ToolDefinition {

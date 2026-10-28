@@ -1,7 +1,7 @@
 /**
  * AgentForge - Distributed Task Queue & Worker Pool
  * 
- * @author Dev Jangid <https://github.com/Dev-5678>
+ * @author Dev <https://github.com/Dev-5678>
  */
 
 export interface QueuedTask<T = any> {

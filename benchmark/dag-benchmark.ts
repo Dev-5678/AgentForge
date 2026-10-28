@@ -1,7 +1,7 @@
 /**
  * AgentForge - 1,000 Node Topological Scheduling Benchmark
  * 
- * @author Dev Jangid <https://github.com/Dev-5678>
+ * @author Dev <https://github.com/Dev-5678>
  */
 
 import { WorkflowDAG } from '../src/dag/graph.js';

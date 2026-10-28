@@ -4,7 +4,7 @@
  * Captures execution hierarchy, latency profiles, token metrics,
  * and error diagnostics across multi-agent DAG pipelines.
  * 
- * @author Dev Jangid <https://github.com/Dev-5678>
+ * @author Dev <https://github.com/Dev-5678>
  */
 
 export interface SpanAttributes {

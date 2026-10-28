@@ -1,7 +1,7 @@
 /**
  * AgentForge - Sandboxed Tool Perimeter Tests
  * 
- * @author Dev Jangid <https://github.com/Dev-5678>
+ * @author Dev <https://github.com/Dev-5678>
  */
 
 import { describe, it } from 'node:test';

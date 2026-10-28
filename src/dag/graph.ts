@@ -4,7 +4,7 @@
  * Implements topological sorting via Kahn's algorithm, cycle detection,
  * concurrency wave scheduling, and dynamic edge conditions.
  * 
- * @author Dev Jangid <https://github.com/Dev-5678>
+ * @author Dev <https://github.com/Dev-5678>
  */
 
 export type NodeStatus = 'PENDING' | 'RUNNING' | 'COMPLETED' | 'FAILED' | 'SKIPPED';

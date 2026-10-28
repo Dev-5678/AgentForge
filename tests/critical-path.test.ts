@@ -4,7 +4,7 @@
 
 import { describe, it } from 'node:test';
 import assert from 'node:assert';
-import { CriticalPathAnalyzer, DAGTaskNode } from '../src/dag/critical-path';
+import { CriticalPathAnalyzer, DAGTaskNode } from '../src/dag/critical-path.js';
 
 describe('DAG Topological Critical Path Calculator', () => {
   it('identifies exact critical path in sequential pipeline', () => {

@@ -1,25 +1,29 @@
 {
   "name": "agent-forge",
-  "version": "1.2.0",
-  "description": "High-Throughput Autonomous AI Agent DAG Workflow Runtime & Sandboxed Execution Engine",
-  "main": "dist/index.js",
+  "version": "2.0.0",
+  "description": "Enterprise-Grade Autonomous Multi-Agent DAG Workflow Engine & Telemetry Control Plane",
+  "type": "module",
+  "main": "dist/src/index.js",
   "scripts": {
-    "build": "tsc",
-    "test": "node --test dist/tests",
-    "benchmark": "node dist/benchmark/dag-benchmark.js && node dist/benchmark/queue-benchmark.js",
+    "build": "tsc && node scripts/copy-assets.mjs",
+    "test": "node scripts/run-tests.mjs",
+    "benchmark": "node dist/benchmark/dag-benchmark.js && node dist/benchmark/queue-benchmark.js && node dist/benchmark/concurrency-benchmark.js",
     "start": "node dist/src/server/api.js"
   },
   "keywords": [
     "ai-agents",
     "dag-engine",
+    "multi-agent",
+    "kahn-topological-sort",
     "orchestrator",
     "opentelemetry",
     "vector-search",
     "sandbox",
+    "blockchain-audit",
     "llm-runtime",
     "typescript"
   ],
-  "author": "Dev Jangid <https://github.com/Dev-5678>",
+  "author": "Dev <https://github.com/Dev-5678>",
   "license": "MIT",
   "devDependencies": {
     "@types/node": "^20.11.0",
